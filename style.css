@@ -131,6 +131,7 @@ tbody tr:hover {
   border: none;
   border-radius: 6px;
   padding: 4px 8px;
+  margin: 0 8px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -197,24 +198,6 @@ tbody tr:hover {
   margin-top: 6px;
   font-size: 22px;
   font-weight: 700;
-}
-
-/* BOTÃO FINALIZAR */
-#finalizarVenda {
-  margin-top: 12px;
-  padding: 14px;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  background: #2ecc71;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-#finalizarVenda:hover {
-  background: #27ae60;
 }
 
 /* CATÁLOGO */
@@ -311,4 +294,41 @@ tbody tr:hover {
 .nota .fechar:hover {
   background: #d93636;
   transform: scale(1.1);
+}
+
+.acoes-venda {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.acoes-venda button {
+  flex: 1;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* FINALIZAR */
+#finalizarVenda {
+  background: #2ecc71;
+  color: white;
+}
+
+#finalizarVenda:hover {
+  background: #27ae60;
+}
+
+/* CANCELAR */
+#cancelarVenda {
+  background: #e74c3c;
+  color: white;
+}
+
+#cancelarVenda:hover {
+  background: #c0392b;
 }
