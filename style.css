@@ -1,0 +1,252 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+body {
+  background: #e4eef7;
+  color: #0b3c5d;
+}
+
+/* HEADER */
+header {
+  background: white;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  padding: 18px;
+  letter-spacing: 2px;
+  border-bottom: 4px solid #0b3c5d;
+}
+
+/* LAYOUT PRINCIPAL */
+.container {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: 16px;
+  padding: 16px;
+}
+
+/* CARDS GERAIS */
+.left,
+.right,
+.catalogo,
+.logo,
+.box {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* ESQUERDA */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.logo {
+  height: 150px;
+  font-size: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* BOXES */
+.box {
+  background: #0b3c5d;
+  color: white;
+  padding: 14px;
+}
+
+.box h3 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.box input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+}
+
+.destaque span {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* DIREITA */
+.right {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.right h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* TABELAS */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead th {
+  background: #0b3c5d;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 8px;
+}
+
+tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background: #f1f7fc;
+}
+
+/* BOTÕES + / - */
+.qtd-btn {
+  background: #0b3c5d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.qtd-btn:hover {
+  background: #145a82;
+}
+
+/* TOTAIS */
+.totais {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subtotal {
+  background: #0b3c5d;
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtotal span {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.subtotal strong {
+  font-size: 36px;
+}
+
+.bottom {
+  display: flex;
+  gap: 10px;
+}
+
+.bottom div {
+  flex: 1;
+  background: #0b3c5d;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.bottom span {
+  font-size: 14px;
+}
+
+.bottom input {
+  margin-top: 6px;
+  width: 100%;
+  padding: 8px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: none;
+}
+
+#troco {
+  display: block;
+  margin-top: 6px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* BOTÃO FINALIZAR */
+#finalizarVenda {
+  margin-top: 12px;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#finalizarVenda:hover {
+  background: #27ae60;
+}
+
+/* CATÁLOGO */
+.catalogo {
+  padding: 14px;
+  overflow-x: hidden;
+}
+
+.catalogo h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.catalogo table {
+  display: block;
+}
+
+.catalogo thead {
+  position: sticky;
+  top: 0;
+  background: #0b3c5d;
+  color: white;
+}
+
+.catalogo tbody {
+  display: block;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.catalogo th,
+.catalogo td {
+  width: 33.33%;
+}

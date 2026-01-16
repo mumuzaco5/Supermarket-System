@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Caixa Aberto</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>CAIXA ABERTO</header>
+
+  <main class="container">
+    <!-- LADO ESQUERDO -->
+    <section class="left">
+      <div class="logo">🛒</div>
+
+      <div class="box">
+        <h3>CÓDIGO DE BARRAS</h3>
+        <input id="barcode" placeholder="Digite o código e pressione Enter">
+      </div>
+
+      <div class="box destaque">
+        <h3>VALOR UNITÁRIO</h3>
+        <span>R$ 0,00</span>
+      </div>
+
+      <div class="box destaque">
+        <h3>TOTAL DO ITEM</h3>
+        <span>R$ 0,00</span>
+      </div>
+    </section>
+
+    <!-- LADO DIREITO -->
+    <section class="right">
+      <h3>LISTA DE PRODUTOS</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Qtd</th>
+            <th>Vlr Unitário</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="lista-produtos">
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="totais">
+        <div class="subtotal">
+          <span>SUBTOTAL</span>
+          <strong>0,00</strong>
+        </div>
+        <div class="bottom">
+          <div>
+            <span>TOTAL RECEBIDO</span>
+            <input id="valorPago" placeholder="R$ 0,00">
+          </div>
+          <div>
+            <span>TROCO</span>
+            <strong id="troco">R$ 0,00</strong>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button id="finalizarVenda">FINALIZAR VENDA</button>
+      </div>
+    </section>
+    <section class="catalogo">
+      <h3>CATÁLOGO DE PRODUTOS</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Produto</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody id="lista-catalogo"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
