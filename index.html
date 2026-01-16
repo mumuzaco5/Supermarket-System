@@ -79,6 +79,9 @@
           </div>
         </div>
       </div>
+      <div class="cpf-area">
+        <input id="cpf" placeholder="CPF (opcional)">
+      </div>
       <div>
         <button id="finalizarVenda">FINALIZAR VENDA</button>
       </div>
@@ -98,6 +101,20 @@
       </table>
     </section>
   </main>
+  <div id="notaFiscal" class="nota hidden">
+    <button class="fechar" onclick="fecharNota()">X</button>
+
+    <h2>NOTA FISCAL</h2>
+    <p id="notaCpf"></p>
+
+    <div id="notaItens"></div>
+
+    <hr>
+
+    <p>Total: <strong id="notaTotal"></strong></p>
+    <p>Pago: <strong id="notaPago"></strong></p>
+    <p>Troco: <strong id="notaTroco"></strong></p>
+  </div>
 
   <script src="script.js"></script>
 </body>
