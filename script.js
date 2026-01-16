@@ -23,6 +23,10 @@ const produtos = {
   "7894900700015": { nome: "Suco de Caixa", preco: 4.30 }
 };
 
+const vlrUnitSpan = document.querySelector("#vlr-unit span");
+const totalItemSpan = document.querySelector("#total-item span");
+
+let ultimoProduto = null;
 let carrinho = {};
 
 const input = document.getElementById("barcode");
@@ -48,12 +52,23 @@ function adicionar(codigo) {
     carrinho[codigo].qtd++;
   }
 
+  ultimoProduto = carrinho[codigo];
+
+  atualizarDestaques();
   atualizar();
 }
 
 function alterarQtd(codigo, delta) {
   carrinho[codigo].qtd += delta;
-  if (carrinho[codigo].qtd <= 0) delete carrinho[codigo];
+
+  if (carrinho[codigo].qtd <= 0) {
+    delete carrinho[codigo];
+    ultimoProduto = null;
+  } else {
+    ultimoProduto = carrinho[codigo];
+  }
+
+  atualizarDestaques();
   atualizar();
 }
 
@@ -85,6 +100,20 @@ function atualizar() {
   subtotalEl.textContent = subtotal.toFixed(2);
 }
 
+function atualizarDestaques() {
+  if (!ultimoProduto) {
+    vlrUnitSpan.textContent = "R$ 0,00";
+    totalItemSpan.textContent = "R$ 0,00";
+    return;
+  }
+
+  const unit = ultimoProduto.preco;
+  const total = ultimoProduto.preco * ultimoProduto.qtd;
+
+  vlrUnitSpan.textContent = `R$ ${unit.toFixed(2)}`;
+  totalItemSpan.textContent = `R$ ${total.toFixed(2)}`;
+}
+
 const inputPago = document.getElementById("valorPago");
 const trocoEl = document.getElementById("troco");
 
@@ -108,6 +137,19 @@ function calcularTroco() {
     atualizar();
   }
 }
+
+const inputCPF = document.getElementById("cpf");
+
+inputCPF.addEventListener("input", () => {
+  let v = inputCPF.value.replace(/\D/g, ""); // só números
+  v = v.slice(0, 11); // máximo 11 dígitos
+
+  v = v.replace(/(\d{3})(\d)/, "$1.$2");
+  v = v.replace(/(\d{3})(\d)/, "$1.$2");
+  v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+  inputCPF.value = v;
+});
 
 function gerarNota(cpf) {
   const nota = document.getElementById("notaFiscal");
@@ -142,13 +184,29 @@ function fecharNota() {
   resetarVenda();
 }
 
+function cpfValidoOuVazio(cpfFormatado) {
+  const apenasNumeros = cpfFormatado.replace(/\D/g, "");
+
+  if (apenasNumeros.length === 0) return true; // vazio pode
+  if (apenasNumeros.length === 11) return true; // completo
+
+  return false;
+}
+
 function finalizarVenda() {
   if (Object.keys(carrinho).length === 0) {
     alert("Nenhum item no carrinho");
     return;
   }
 
-  const cpf = document.getElementById("cpf").value.trim();
+  const cpfInput = document.getElementById("cpf").value.trim();
+
+  // valida CPF
+  if (!cpfValidoOuVazio(cpfInput)) {
+    alert("CPF incompleto! Preencha os 11 dígitos ou deixe em branco.");
+    return;
+  }
+
   const desejaNota = confirm("Deseja emitir nota fiscal?");
 
   if (!desejaNota) {
@@ -156,18 +214,25 @@ function finalizarVenda() {
     return;
   }
 
-  gerarNota(cpf);
+  // sem confirm do Chrome, direto pra nota
+  gerarNota(cpfInput);
 }
 
 function resetarVenda() {
   carrinho = {};
+  ultimoProduto = null;
+
   inputPago.value = "";
   document.getElementById("cpf").value = "";
   trocoEl.textContent = "R$ 0,00";
+
+  atualizarDestaques();
   atualizar();
 }
 
 const btnFinalizar = document.getElementById("finalizarVenda");
+const btnCancelar = document.getElementById("cancelarVenda");
+btnCancelar.addEventListener("click", resetarVenda)
 btnFinalizar.addEventListener("click", finalizarVenda);
 
 const listaCatalogo = document.getElementById("lista-catalogo");
