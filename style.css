@@ -1,4 +1,5 @@
 * {
+  overflow-x: hidden;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -202,8 +203,16 @@ tbody tr:hover {
 
 /* CATÁLOGO */
 .catalogo {
-  padding: 14px;
+  width: 355px;
+  padding: 2px;
   overflow-x: hidden;
+}
+
+.catalogo-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 8px;
 }
 
 .catalogo h3 {
@@ -213,25 +222,33 @@ tbody tr:hover {
 }
 
 .catalogo table {
-  display: block;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.catalogo thead {
-  position: sticky;
-  top: 0;
-  background: #0b3c5d;
-  color: white;
+.catalogo thead,
+.catalogo tbody {
+  display: block;
+  width: 100%;
+}
+
+.catalogo thead tr,
+.catalogo tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
 
 .catalogo tbody {
-  display: block;
   max-height: 400px;
   overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 .catalogo th,
 .catalogo td {
-  width: 33.33%;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .cpf-area {
@@ -331,4 +348,73 @@ tbody tr:hover {
 
 #cancelarVenda:hover {
   background: #c0392b;
+}
+
+.filtro-catalogo {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* INPUT DE PESQUISA */
+#pesquisaCatalogo {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+}
+
+#pesquisaCatalogo:focus {
+  outline: none;
+  border-color: #0b3c5d;
+  box-shadow: 0 0 0 2px rgba(11, 60, 93, 0.15);
+}
+
+#btnFiltro {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#btnFiltro:hover {
+  background: #374151;
+}
+
+.menu-filtro {
+  display: block;
+  position: absolute;
+  top: 110%;
+  right: -4px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.menu-filtro button { 
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  background: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-filtro button:hover {
+  background: #f1f5f9;
+}
+
+.hidden {
+  display: none;
 }
