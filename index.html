@@ -88,9 +88,34 @@
       </div>
     </section>
     <section class="catalogo">
-      <h3>CATÁLOGO DE PRODUTOS</h3>
+      <div class="catalogo-topo">
+        <h3>CATÁLOGO DE PRODUTOS</h3>
+        <div class="filtro-catalogo">
+          <button id="btnFiltro">Filtrar ▾</button>
 
+          <div id="menuFiltro" class="menu-filtro hidden">
+            <button data-cat="todos">Todos</button>
+            <button data-cat="mercearia">Mercearia</button>
+            <button data-cat="bebidas">Bebidas</button>
+            <button data-cat="higiene">Higiene</button>
+            <button data-cat="carne">Carnes</button>
+            <button data-cat="hortifruti">Hortifruti</button>
+            <button data-cat="limpeza">Limpeza</button>
+            <button data-cat="laticinios">Laticínios</button>
+          </div>
+        </div>
+      </div>
+      <input 
+          type="text"
+          id="pesquisaCatalogo"
+          placeholder="Pesquisar produto ou código..."
+          autocomplete="off"
+          maxlength="40"
+        >
       <table>
+        <colgroup>
+          <col style="width: 100%">
+        </colgroup>
         <thead>
           <tr>
             <th>Código</th>
